@@ -42,6 +42,9 @@
 *.idb
 *.pdb
 
+# STM32CubeIDE Metadata
+*.metadata/
+
 # Kernel Module Compile Results
 *.mod*
 *.cmd
