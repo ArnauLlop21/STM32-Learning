@@ -94,13 +94,21 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  volatile int pinValue = 0;
+  volatile int ledFreq = 0;
   while (1)
   {
     /* USER CODE END WHILE */
+	  pinValue = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13);
+	  if (pinValue){
+		  ledFreq = 500;
+	  }else{
+		  ledFreq = 100;
+	  }
 	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); /* Set LED ON */
-	  HAL_Delay(1000); /* Delay 1000 milliseconds */
+	  HAL_Delay(ledFreq); /* Delay 1000 milliseconds */
 	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET); /* Set LED OFF */
-	  HAL_Delay(1000); /* Delay 1000 milliseconds */
+	  HAL_Delay(ledFreq); /* Delay 1000 milliseconds */
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
