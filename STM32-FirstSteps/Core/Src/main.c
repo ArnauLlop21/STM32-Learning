@@ -19,7 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
-
+#include "newTypes.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -57,12 +57,13 @@ void StartDefaultTask(void const * argument);
 void Task02_init(void const * argument);
 
 /* USER CODE BEGIN PFP */
-
+#define TIME_ARRAY_LENGTH (4U)
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+volatile uint8 timeDelayIndex = 0;
+uint32 timeDelayArray[TIME_ARRAY_LENGTH] = {1000,500,250,100};
 /* USER CODE END 0 */
 
 /**
@@ -280,7 +281,12 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  if (HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13))
+	  {
+		 timeDelayIndex +=1;
+		 timeDelayIndex %= TIME_ARRAY_LENGTH;
+	  }
+	  osDelay(1);
   }
   /* USER CODE END 5 */
 }
@@ -298,7 +304,10 @@ void Task02_init(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+	  vTaskDelay(timeDelayArray[timeDelayIndex]);
+	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+	  vTaskDelay(timeDelayArray[timeDelayIndex]);
   }
   /* USER CODE END Task02_init */
 }

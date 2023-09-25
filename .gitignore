@@ -68,3 +68,21 @@ dkms.conf
 # Log files
 *.log
 
+STM32-FirstSteps/.settings/language.settings.xml
+STM32-FirstSteps/.settings/language.settings.xml
+
+*.settings*
+*.plugins*
+
+.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
+.metadata/.plugins/org.eclipse.ui.ide/dialog_settings.xml
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.workbench.prefs
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.ui.prefs
+.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.debug.core.prefs
+.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources
+.metadata/.plugins/org.eclipse.core.resources/.root/.markers.snap
+.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index
+.metadata/.plugins/org.eclipse.cdt.core/STM32-FirstSteps.language.settings.xml
+.metadata/.plugins/org.eclipse.cdt.core/.log
+.metadata/.log
+.metadata/.ide.log
